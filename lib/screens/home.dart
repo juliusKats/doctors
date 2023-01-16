@@ -1,4 +1,5 @@
 import 'package:doctors/components/appointcard.dart';
+import 'package:doctors/components/Doctor/doctorcard.dart';
 import 'package:flutter/material.dart';
 import 'package:doctors/utils/config.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -44,20 +45,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return  Scaffold (
       body: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 15
         ),
         child: SafeArea(
+          child:SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                      'Hello: Hny Getrude', // hard corded
+                      'Welcome', // hard corded
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -73,10 +75,9 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               Config.spaceMedium,
-              // Config.spaceMedium,
-              // category listing
-              Text(
-                'Category 4',
+              
+              const Text(
+                'Category',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight:FontWeight.bold,
@@ -131,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                   ),
               Config.spaceSmall,
               // display appointment card here
-              Appointmentcard(),
+              const Appointmentcard(),
               Config.spaceSmall,
                const Text(
                     'Top Doctors',
@@ -141,8 +142,20 @@ class _HomePageState extends State<HomePage> {
                       
                     ),
                   ),
+               Config.spaceSmall,
                // display topdoctor card here
+               Column(
+                children: 
+                  List.generate(10, (index) {
+                  return const Doctorcard(
+                    route: 'doctorsdetails',
+                  );
+                  })
+                ,
+               
+               ),
             ],
+          )
           ),
         )
       )
