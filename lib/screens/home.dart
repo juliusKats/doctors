@@ -1,3 +1,4 @@
+import 'package:doctors/components/appointcard.dart';
 import 'package:flutter/material.dart';
 import 'package:doctors/utils/config.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,7 +42,7 @@ class _HomePageState extends State<HomePage> {
  ];
   @override
   Widget build(BuildContext context) {
-    return const Scaffold (
+    return  Scaffold (
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 15,
@@ -71,28 +72,76 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              Config.spaceSmall,
+              Config.spaceMedium,
               // Config.spaceMedium,
               // category listing
               Text(
-                'Category',
+                'Category 4',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight:FontWeight.bold,
                 ),
               ),
               Config.spaceSmall,
-              // SizedBox(
-              //   height: 20,
-              //   child: ListView(
-              //     scrollDirection: Axis.horizontal,
-              //     children: List<Widget>.generate(medCat.length, (index) {
-              //       margin: const Edge
-              //     }),
-              //   ) ,
-              // )
-              // building category listing
-
+               // building category listing
+              SizedBox(
+                height: Config.heightSize * 0.05,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children:List<Widget>.generate(medCat.length, (index){
+                    return Card(
+                      margin:const EdgeInsets.only(right: 20),
+                      color: Config.primaryColor,
+                      child:Padding(
+                        padding:const EdgeInsets.symmetric(horizontal:15,vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          FaIcon(
+                            medCat[index]['icon'],
+                            color: Colors.red,
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            medCat[index]['category'],
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ), 
+                      )
+                      
+                    );
+                  }),
+                ),
+              ),
+              Config.spaceSmall,
+              const Text(
+                    'Appointment Today',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      
+                    ),
+                  ),
+              Config.spaceSmall,
+              // display appointment card here
+              Appointmentcard(),
+              Config.spaceSmall,
+               const Text(
+                    'Top Doctors',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      
+                    ),
+                  ),
+               // display topdoctor card here
             ],
           ),
         )
