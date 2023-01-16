@@ -1,3 +1,4 @@
+import 'package:doctors/screens/booking.dart';
 import 'package:flutter/material.dart';
 import 'package:doctors/main_layout.dart';
 import 'package:doctors/screens/auth.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         // this is auth page (login and sign up)
         'main': (context)=> const MainLayout(),
         'doctorsdetails':(context)=>const DoctorDetails(), // Navigates to doctors details page
+        'booking':(context) => const Booking(),
       },
       // home: const MyHomePage(),
     );
