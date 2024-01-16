@@ -117,8 +117,10 @@ class _BookingState extends State<Booking> {
                   child: Button(
                     width: double.infinity, 
                     title: 'Make Appointment', 
-                    onPressed: (){}, 
-                    disable: _timeSelected && _dateSelected ? false: true
+                    onPressed: (){
+                      Navigator.of(context).popAndPushNamed('booksuccess');
+                    }, 
+                    disable: _timeSelected &&_dateSelected ? false: true
                     ),
                 ),
               )
